@@ -1,16 +1,17 @@
 
-body{
-    background-color: rgb(237, 245, 245);
+.maincontainer{
+  padding: 100px 600px;
+   
 }
 /* Container for the whole login page */
 .container {
     max-width: 400px;
     margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
+    padding: 30px 50px;
+    border: 1px solid #131111;
     border-radius: 8px;
     text-align: center;
-    background-color: #bf6e6e;
+    background-color: #a7bbaa;
   }
   
   /* Title of the login form */

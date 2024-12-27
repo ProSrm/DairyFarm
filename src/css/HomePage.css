@@ -1,0 +1,8 @@
+body {
+    background-image: url('D:\WebApps\Farm\DairyFarm\public\villageHome.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center; 
+    padding: 10px;
+    height: 100vh;
+} 

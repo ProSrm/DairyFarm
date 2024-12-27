@@ -47,42 +47,45 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
     };
 
     return (
-        <div className="container">
-            <h2>Login</h2>
-            <form onSubmit={handleSubmit(onSubmit)} className="form">
-                <div className="field">
-                    <label>Email</label>
-                    <input
-                        value={email}
-                        type="email"
-                        {...register("email", { required: "Email is required" })}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    {errors.email && <p className="error">{errors.email.message}</p>}
-                </div>
+        <div className="maincontainer">
+            <div className="container">
+                <h2>Login</h2>
+                <form onSubmit={handleSubmit(onSubmit)} className="form">
+                    <div className="field">
+                        <label>Email</label>
+                        <input
+                            value={email}
+                            type="email"
+                            {...register("email", { required: "Email is required" })}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        {errors.email && <p className="error">{errors.email.message}</p>}
+                    </div>
 
-                <div className="field">
-                    <label>Password</label>
-                    <input
-                        value={password}
-                        type="password"
-                        {...register("password", {
-                            required: "Password is required",
-                            minLength: { value: 6, message: "Password must be at least 6 characters" },
-                        })}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    {errors.password && <p className="error">{errors.password.message}</p>}
-                </div>
+                    <div className="field">
+                        <label>Password</label>
+                        <input
+                            value={password}
+                            type="password"
+                            {...register("password", {
+                                required: "Password is required",
+                                minLength: { value: 6, message: "Password must be at least 6 characters" },
+                            })}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        {errors.password && <p className="error">{errors.password.message}</p>}
+                    </div>
 
-                {/* <Link to="/home">Go to Home Page</Link> */}
-                <button type="submit" className="button" >Login</button>
+                    {/* <Link to="/home">Go to Home Page</Link> */}
+                    <button type="submit" className="button" >Login</button>
 
-                {loginError && <p className="error">{loginError}</p>}
-            </form>
+                    {loginError && <p className="error">{loginError}</p>}
+                </form>
 
+            </div>
         </div>
     );
+
 };
 
 export default LoginPage;
