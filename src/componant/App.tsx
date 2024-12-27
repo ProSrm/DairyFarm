@@ -5,7 +5,7 @@ import viteLogo from '/vite.svg'
 // import '../css/App.css'
 import LoginPage from './LoginPage';
 import HomePage from './HomePage';
-import Dfd from './dfd';
+
 
 export interface UserData {
   email: string;
@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/home" element={<Dfd />} />
+
 
         </Routes>
       </Router>

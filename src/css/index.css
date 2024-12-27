@@ -32,14 +32,15 @@ a:hover {
   padding: 200px 600px;
 } */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 } */
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
 
 button {
   border-radius: 8px;
