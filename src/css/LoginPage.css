@@ -1,0 +1,84 @@
+
+body{
+    background-color: rgb(237, 245, 245);
+}
+/* Container for the whole login page */
+.container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #bf6e6e;
+  }
+  
+  /* Title of the login form */
+  .container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Form styles */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  /* Styling for input fields */
+  .field {
+    text-align: left;
+  }
+  
+  .field label {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .field input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-top: 5px;
+    box-sizing: border-box;
+  }
+  
+  /* Error message styling */
+  .error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+  }
+  
+  /* Button styling */
+  .button {
+    padding: 10px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Link styling (optional) */
+  .link {
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+  }
+  
+  .link:hover {
+    text-decoration: underline;
+  }
+  
