@@ -1,12 +1,25 @@
 
-.maincontainer{
-  padding: 100px 600px;
-   
+
+body{
+  /* padding: 0px;
+  margin: 0px; */
+}
+
+
+.mainContainer {
+  background-image: url('D:\WebApps\Farm\DairyFarm\src\assets\Img\shelter.jpg'); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat; 
+  min-height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 /* Container for the whole login page */
 .container {
     max-width: 400px;
-    margin: 50px auto;
+    margin: 100px 100px;
     padding: 30px 50px;
     border: 1px solid #131111;
     border-radius: 8px;
