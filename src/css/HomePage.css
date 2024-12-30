@@ -1,8 +1,11 @@
-body {
-    background-image: url('D:\WebApps\Farm\DairyFarm\public\villageHome.jpg');
+body {}
+
+.HomePageContainer {
+    /* background-image: url('D:\WebApps\Farm\DairyFarm\src\assets\Img\villageHome.jpg'); */
+    background-color:antiquewhite;
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center; 
+    background-position: center;
     padding: 10px;
     height: 100vh;
-} 
+}

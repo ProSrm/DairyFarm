@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import viteLogo from '/vite.svg'
 // import '../css/App.css'
 import LoginPage from './LoginPage';
 import HomePage from './HomePage';
@@ -29,8 +27,6 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
           <Route path="/home" element={<HomePage />} />
-
-
         </Routes>
       </Router>
     </>
