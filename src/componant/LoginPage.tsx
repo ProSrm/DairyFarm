@@ -22,7 +22,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
     const onSubmit: SubmitHandler<LoginFormInputs> = async (data: LoginFormInputs) => {
         console.log("Login Data: ", data);
         onLoginSuccess(data.email);
-        navigate('/home');
+        navigate('/adminHome');
     };
 
     return (

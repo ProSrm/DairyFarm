@@ -10,7 +10,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
     useEffect(() => {
         const timer = setInterval(() => {
             setCurrentSlide((prev) => (prev + 1) % images.length);
-        }, 6000);
+        }, 5000);
 
         return () => clearInterval(timer);
     }, [images.length]);
