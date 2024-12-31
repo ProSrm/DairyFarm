@@ -43,33 +43,33 @@ const ShipmentStatistics = () => {
             margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
           >
             <CartesianGrid strokeDasharray="3 3" className="opacity-30" />
-            <XAxis 
-              dataKey="day" 
+            <XAxis
+              dataKey="day"
               fontSize={12}
               tickLine={false}
             />
-            <YAxis 
+            <YAxis
               tickFormatter={(value) => `${value}%`}
               fontSize={12}
               tickLine={false}
               axisLine={false}
             />
-            <Legend 
-              verticalAlign="top" 
+            <Legend
+              verticalAlign="top"
               height={36}
               iconType="circle"
             />
-            <Bar 
-              dataKey="shipment" 
-              name="Sales" 
-              fill="#111827" 
+            <Bar
+              dataKey="shipment"
+              name="Sales"
+              fill="#111827"
               radius={[2, 2, 0, 0]}
               barSize={12}
             />
-            <Bar 
-              dataKey="delivery" 
-              name="Delivery"   
-              fill="#E5E7EB" 
+            <Bar
+              dataKey="delivery"
+              name="Delivery"
+              fill="#E5E7EB"
               radius={[2, 2, 0, 0]}
               barSize={12}
             />
