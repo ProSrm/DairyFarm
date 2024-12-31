@@ -1,16 +1,30 @@
 
+
 body{
-    background-color: rgb(237, 245, 245);
+  /* padding: 0px;
+  margin: 0px; */
+}
+
+
+.mainContainer {
+  background-image: url('D:\WebApps\Farm\DairyFarm\src\assets\Img\shelter.jpg'); 
+  background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat; 
+  min-height: 100vh; 
+  display: flex;
+  align-items: center;
+  justify-content: left;
 }
 /* Container for the whole login page */
 .container {
     max-width: 400px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ddd;
+    margin: 100px 100px;
+    padding: 30px 50px;
+    border: 1px solid #131111;
     border-radius: 8px;
     text-align: center;
-    background-color: #bf6e6e;
+    background-color: #a7bbaa;
   }
   
   /* Title of the login form */

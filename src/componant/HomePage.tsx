@@ -1,18 +1,20 @@
-import React from 'react'
-import { UserData } from './App';
+import React from 'react';
+import { NavBar } from './NavBar';
+import "../css/HomePage.css";
+import Slideshow from './Slideshow';
+import shelter from '../assets/Img/shelter.jpg';
+import villageHome from '../assets/Img/villageHome.jpg';
 
-interface HomePageProps {
-    userData: UserData | null;
-  }
-const HomePage: React.FC<HomePageProps> = ({ userData }) => {
-    if (!userData) {
-      return <div>Please log in first</div>;
-    }
+const HomePage: React.FC = () => {
+  const images = [shelter, villageHome];
+
   return (
-    <div>Welcome  <pre/>   
-        {userData.email}
+    <div className="HomePageContainer">
+      <NavBar />
+      <h1 style={{ textAlign: 'center', margin: '20px 0' }}>Welcome to Our Home Page</h1>
+      <Slideshow images={images} />
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

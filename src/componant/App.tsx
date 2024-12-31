@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import viteLogo from '/vite.svg'
-import '../css/App.css'
 import LoginPage from './LoginPage';
 import HomePage from './HomePage';
+import AdminHomePage from './Admin/AdminHomePage';
+import ProductDetails from './Product';
+import AllProducts from './AllProduct';
 
 export interface UserData {
   email: string;
@@ -24,14 +24,16 @@ function App() {
 
   return (
     <>
-       <Router>
-      <Routes>
-        <Route path="/" element={<LoginPage  onLoginSuccess={handleLoginSuccess}/>} />
-        <Route path="/home" element={<HomePage userData={userData}/>} />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginPage onLoginSuccess={handleLoginSuccess} />} />
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/adminHome" element={<AdminHomePage />} />
+          <Route path="/product/:productId" element={<ProductDetails />} />
+          <Route path="/allProduct" element={<AllProducts />} />
+        </Routes>
+      </Router>
     </>
   )
 }
-
 export default App
