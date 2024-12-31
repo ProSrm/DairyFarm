@@ -12,8 +12,7 @@ export const NavBar: React.FC = () => {
             <Nav.Link href="#features">Features</Nav.Link>            
             <Nav.Link href="#products">Products</Nav.Link>
             <Nav.Link href="#about">About</Nav.Link>
-          </Nav>
-       
+          </Nav>       
       </Navbar>
   );
 };

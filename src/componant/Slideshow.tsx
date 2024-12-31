@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "../css/SlideShow.css"
 interface SlideshowProps {
     images: string[];
 }
@@ -20,7 +21,7 @@ const Slideshow: React.FC<SlideshowProps> = ({ images }) => {
             {images.map((image: string | undefined, index: React.Key | null | undefined) => (
                 <div
                     key={index}
-                    className={`absolute w-full h-full transition-opacity duration-500 ${currentSlide === index ? 'opacity-100' : 'opacity-0'
+                    className={`SlideShowImg absolute w-full h-full transition-opacity duration-500 ${currentSlide === index ? 'opacity-100' : 'opacity-0'
                         }`}
                 >
                     <img

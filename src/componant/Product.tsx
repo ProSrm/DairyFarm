@@ -4,6 +4,8 @@ import { Button } from 'react-bootstrap';
 import milk from '../assets/ProductImg/milk.jpg';
 import curd from '../assets/ProductImg/curd.jpg';
 import butter from '../assets/ProductImg/butter.webp';
+import paneer from '../assets/ProductImg/paneer.webp';
+import cheese from '../assets/ProductImg/cheese.jpg';
 import "../css/Product.css"
 
 interface Product {
@@ -31,6 +33,18 @@ const productsData: Product[] = [
         name: "Butter",
         description: "Butter is a dairy product made from the fat and protein components of churned cream. It's commonly used as a spread and in cooking applications.",
         image: butter
+    },
+    {
+        id: 4,
+        name: "Paneer",
+        description: "Paneer is a fresh, soft cheese widely used in South Asian cuisine, particularly in India. Known for its versatility, paneer is a staple ingredient in vegetarian dishes and is valued for its mild flavor, creamy texture, and high nutritional content.",
+        image: paneer
+    },
+    {
+        id: 5,
+        name: "Cheese",
+        description: "Cheese is a dairy product derived from milk, made by coagulating milk proteins (casein) and separating the solid curds from the liquid whey. It is a versatile ingredient enjoyed worldwide for its unique flavors, textures, and culinary applications.",
+        image: cheese
     }
 ];
 
@@ -81,6 +95,7 @@ const ProductDetails: React.FC = () => {
                 <h1 className="product-title">{product.name}</h1>
                 <p className="product-description">{product.description}</p>
                 <Button variant="primary" className="edit-button">Edit</Button>
+                <Button variant="danger" className="delete-button">Delete</Button>
             </div>
         </div>
     );
