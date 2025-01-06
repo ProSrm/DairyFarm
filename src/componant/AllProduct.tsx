@@ -4,7 +4,9 @@ import butter from '../assets/ProductImg/butter.webp';
 import paneer from '../assets/ProductImg/paneer.webp';
 import cheese from '../assets/ProductImg/cheese.jpg'
 import { useNavigate } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 import "../css/Product.css"
+import "../css/AllProduct.css"
 const AllProducts: React.FC = () => {
 
     const products = [
@@ -20,7 +22,7 @@ const AllProducts: React.FC = () => {
         navigate(`/product/${productId}`);
     }
     return (
-        <div>
+        <div className='mainAllProduct'>
             <h2 className="text-center my-6">All Products</h2>
             <section className='Products' id="products">
                 <div className='AllProduct'>
@@ -41,6 +43,7 @@ const AllProducts: React.FC = () => {
                     ))}
                 </div>
             </section>
+            <Button variant="primary" className="add-button">Add+</Button>
         </div>
     );
 };

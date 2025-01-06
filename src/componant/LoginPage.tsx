@@ -27,7 +27,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLoginSuccess }) => {
 
     return (
         <div className="mainContainer">
-            <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+            <div className="min-h-screen  flex items-center justify-center p-4">
                 <div className="w-full max-w-4xl bg-white rounded-lg shadow-lg overflow-hidden flex">
                     {/* Left side - Image/Banner */}
                     <div className="hidden md:block w-1/2 bg-blue-600 p-12">
