@@ -1,43 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-
-interface Product {
-  id: number;
-  name: string;
-  price: number;
-}
+import { useNavigate } from 'react-router-dom';
 
 interface ProductFormData {
   name: string;
   price: string;
+  description: string;
+  image: File | null;
 }
 
 const ProductList: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
   const [formData, setFormData] = useState<ProductFormData>({
     name: '',
-    price: ''
+    price: '',
+    description: '',
+    image: null,
   });
 
-  const fetchProducts = async () => {
-    try {
-      const response = await axios.get<Product[]>('https://localhost:7173/api/product', {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-      setProducts(response.data);
-    } catch (error) {
-      console.error('There was an error fetching the data!', error);
-    }
-  };
+  const navigate = useNavigate();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleImageUpload: React.ChangeEventHandler<HTMLInputElement> = (event) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      setFormData((prevData) => ({ ...prevData, image: file }));
+    }
   };
 
   const handleAddProduct = async () => {
@@ -47,94 +38,113 @@ const ProductList: React.FC = () => {
     }
 
     try {
-      const newProduct = {
-        name: formData.name,
-        price: parseFloat(formData.price)
-      };
+      let imageUrl = '';
 
-      await axios.post('https://localhost:7173/api/product', newProduct, {
+      // If the image is provided, generate a local URL (you would store this in the public folder)
+      if (formData.image) {
+        const imageName = formData.image.name; // Get the file name
+        const localImagePath = `/src/assets/ProductImg/${imageName}`; // This would be the relative path
+
+        // You can implement logic to save the image locally (in the public/images folder)
+        // For simplicity, assuming you have saved it manually in the public folder.
+
+        imageUrl = localImagePath; // Save only the image path in the database
+      }
+
+      // Prepare the product data to send
+      const productData = {
+        name: formData.name,
+        price: parseFloat(formData.price), // Convert price to a number
+        description: formData.description,
+        ImgUrl: imageUrl, // Store the image URL (relative path)
+      };
+console.log(productData)
+      // Send the data to the backend
+      await axios.post('https://localhost:7173/api/product', productData, {
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
       });
 
-      setFormData({
-        name: '',
-        price: ''
-      });
-
-      await fetchProducts();
+      alert('Product added successfully');
+      navigate('/allProduct'); // Navigate back to the AllProducts page
     } catch (error) {
       console.error('Error adding product:', error);
       alert('Failed to add product');
     }
   };
 
-  useEffect(() => {
-    fetchProducts();
-  }, []);
-
   return (
-    <div className="max-w-4xl mx-auto p-6">
-      <h1 className="text-3xl font-bold mb-8 text-gray-800">Product List</h1>
-      
-      {/* Product List */}
-      <div className="mb-8">
-        <ul className="space-y-3">
-          {products.map((product) => (
-            <li 
-              key={product.id}
-              className="p-4 bg-white shadow rounded-lg flex justify-between items-center"
+    <div className="mainAllProduct">
+      <div className="max-w-4xl mx-auto p-6">
+        <h1 className="text-3xl font-bold mb-8 text-gray-800">Product List</h1>
+
+        {/* Add Product Form */}
+        <div className="bg-white shadow-md rounded-lg p-6">
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">Add New Product</h2>
+          <div className="space-y-4">
+            <div>
+              <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
+                Name
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                value={formData.name}
+                onChange={handleInputChange}
+                placeholder="Enter Product Name"
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+            <div>
+              <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
+                Description
+              </label>
+              <input
+                type="text"
+                id="description"
+                name="description"
+                value={formData.description}
+                onChange={handleInputChange}
+                placeholder="Enter Product Description"
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+            <div>
+              <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
+                Price
+              </label>
+              <input
+                type="number"
+                id="price"
+                name="price"
+                value={formData.price}
+                onChange={handleInputChange}
+                placeholder="Enter Product Price"
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+            <div>
+              <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">
+                Upload Image
+              </label>
+              <input
+                type="file"
+                id="image"
+                name="image"
+                accept="image/*"
+                onChange={handleImageUpload}
+                className="w-full p-2 border border-gray-300 rounded-md"
+              />
+            </div>
+            <button
+              onClick={handleAddProduct}
+              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
             >
-              <span className="text-lg text-gray-700">{product.name}</span>
-              <span className="font-semibold text-green-600">${product.price.toFixed(2)}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Add Product Form */}
-      <div className="bg-white shadow-md rounded-lg p-6">
-        <h2 className="text-xl font-semibold mb-4 text-gray-800">Add New Product</h2>
-        <div className="space-y-4">
-          <div>
-            <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              placeholder="Enter Product Name"
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-            />
+              Add Product
+            </button>
           </div>
-          
-          <div>
-            <label htmlFor="price" className="block text-sm font-medium text-gray-700 mb-1">
-              Price
-            </label>
-            <input
-              type="number"
-              id="price"
-              name="price"
-              value={formData.price}
-              onChange={handleInputChange}
-              placeholder="Enter Product Price"
-              step="0.01"
-              min="0"
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-            />
-          </div>
-
-          <button
-            onClick={handleAddProduct}
-            className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors duration-200"
-          >
-            Add Product
-          </button>
         </div>
       </div>
     </div>
