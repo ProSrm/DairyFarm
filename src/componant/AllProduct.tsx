@@ -1,32 +1,48 @@
-import milk from '../assets/ProductImg/milk.jpg';
-import curd from '../assets/ProductImg/curd.jpg';
-import butter from '../assets/ProductImg/butter.webp';
-import paneer from '../assets/ProductImg/paneer.webp';
-import cheese from '../assets/ProductImg/cheese.jpg'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import "../css/AllProduct.css";
 import { Button } from 'react-bootstrap';
-import "../css/Product.css"
-import "../css/AllProduct.css"
-const AllProducts: React.FC = () => {
+import "../css/AllProduct.css";
 
-    const products = [
-        { id: 1, name: "Milk", image: milk },
-        { id: 2, name: "Curd", image: curd },
-        { id: 3, name: "Butter", image: butter },
-        { id: 4, name: "Paneer", image: paneer },
-        { id: 5, name: "cheese", image: cheese }
-        
-    ];
+
+interface Product {
+    id: number;
+    name: string;
+    ImgUrl: string;
+}
+
+const AllProducts: React.FC = () => {
+    const [products, setProducts] = useState<Product[]>([]);
     const navigate = useNavigate();
+
+    const fetchProducts = async () => {
+        try {
+            const response = await axios.get<Product[]>('https://localhost:7173/api/product');
+            setProducts(response.data);
+            console.log(response.data)
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
+
     const handleProductClick = (productId: number) => {
         navigate(`/product/${productId}`);
-    }
+    };
+
+    const gotoProductList = () => {
+        navigate('/productList');
+    };
+
     return (
-        <div className='mainAllProduct'>
+        <div className="mainAllProduct">
             <h2 className="text-center my-6">All Products</h2>
-            <section className='Products' id="products">
-                <div className='AllProduct'>
-                    {/* Replace the below list with actual product content */}
+            <section className="Products" id="products">
+                <div className="AllProduct">
                     {products.map((product) => (
                         <div
                             key={product.id}
@@ -34,17 +50,22 @@ const AllProducts: React.FC = () => {
                             onClick={() => handleProductClick(product.id)}
                         >
                             <img
-                                src={product.image}
+                                src={product.ImgUrl} 
                                 alt={product.name}
                                 className="w-full h-48 object-cover rounded-lg"
                             />
-                            <h2 className='ProductName' >{product.name}</h2>
+                            <h2 className="ProductName">{product.name}</h2>
                         </div>
                     ))}
                 </div>
             </section>
-            <Button variant="primary" className="add-button">Add+</Button>
+            <Button variant="primary" onClick={gotoProductList} className="add-button">
+                Add+
+            </Button>
         </div>
     );
 };
+
 export default AllProducts;
+
+

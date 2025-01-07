@@ -5,6 +5,7 @@ import HomePage from './HomePage';
 import AdminHomePage from './Admin/AdminHomePage';
 import ProductDetails from './Product';
 import AllProducts from './AllProduct';
+import ProductList from './Products/ProductList';
 
 export interface UserData {
   email: string;
@@ -31,6 +32,7 @@ function App() {
           <Route path="/adminHome" element={<AdminHomePage />} />
           <Route path="/product/:productId" element={<ProductDetails />} />
           <Route path="/allProduct" element={<AllProducts />} />
+          <Route path="/productList" element={<ProductList />} />
         </Routes>
       </Router>
     </>
