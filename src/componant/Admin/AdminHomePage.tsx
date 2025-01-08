@@ -1,31 +1,39 @@
-import React from 'react';
 import '../../css/HomePage.css'
 import Slideshow from '../Slideshow';
 import shelter from '../../assets/Img/shelter.jpg';
 import villageHome from '../../assets/Img/villageHome.jpg';
-import milk from '../../assets/ProductImg/milk.jpg';
-import curd from '../../assets/ProductImg/curd.jpg';
-import butter from '../../assets/ProductImg/butter.webp';
-import paneer from '../../assets/ProductImg/paneer.webp';
-import cheese from '../../assets/ProductImg/cheese.jpg'
 import { NavBar } from '../NavBar';
 import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+interface Product {
+    id: number;
+    name: string;
+    imgUrl: string;
+}
 const AdminHomePage: React.FC = () => {
     const images = [shelter, villageHome];
-    const products = [
-        { id: 1, name: "Milk", image: milk },
-        { id: 2, name: "Curd", image: curd },
-        { id: 3, name: "Butter", image: butter },
-        { id: 4, name: "Paneer", image: paneer },
-        { id: 5, name: "cheese", image: cheese }
-    ];
+    const [products, setProducts] = useState<Product[]>([]);
     const navigate = useNavigate();
+
+    const fetchProducts = async () => {
+        try {
+            const response = await axios.get<Product[]>('https://localhost:7173/api/product');
+            setProducts(response.data);
+            console.log(response.data);
+        } catch (error) {
+            console.error('Error fetching products:', error);
+        }
+    };
+
+    useEffect(() => {
+        fetchProducts();
+    }, []);
     const handleProductClick = (productId: number) => {
         navigate(`/product/${productId}`);
     };
-    const  navigateAllproduct=()=>{
+    const navigateAllproduct = () => {
         navigate('/allProduct')
     };
     return (
@@ -35,7 +43,7 @@ const AdminHomePage: React.FC = () => {
             <Slideshow images={images} />
             <h2 className="text-center my-6">Our Products</h2>
             <section className='Products' id="products">
-                <div className='AllProduct'>
+                <div className='AllProduct1'>
                     {/* Replace the below list with actual product content */}
                     {products.map((product) => (
                         <div
@@ -44,7 +52,7 @@ const AdminHomePage: React.FC = () => {
                             onClick={() => handleProductClick(product.id)}
                         >
                             <img
-                                src={product.image}
+                                src={product.imgUrl}
                                 alt={product.name}
                                 className="w-full h-48 object-cover rounded-lg"
                             />
@@ -53,8 +61,10 @@ const AdminHomePage: React.FC = () => {
                     ))}
                 </div>
             </section>
-            <Button variant="primary" className="seeAllProduct-button" onClick={() => navigateAllproduct()}>See All Product</Button>
 
+            <Button variant="primary" className="seeAllProduct-button" onClick={() => navigateAllproduct()}>See All Product</Button>
+           
+            
         </div>
 
     );

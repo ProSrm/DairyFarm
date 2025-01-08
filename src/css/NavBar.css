@@ -4,10 +4,10 @@
 .navbar {
     background-color: #79a592; /* Primary blue color */
     padding: 10px;
+    
+   
   }
-  /* .body{
-    padding: 0px 200px;
-  } */
+  
   /* Styling for the Navbar brand */
   .navbar-brand {
     font-size: 1.5rem;
@@ -18,7 +18,7 @@
   }
   
   .navbar-brand:hover {
-    color: #ffdd57; /* A hover effect with a golden color */
+    color: #ffdd57; 
     text-decoration: none;
   }
   
@@ -31,7 +31,7 @@
   }
   
   .nav-link:hover {
-    color: #ffdd57; /* A hover effect with a golden color */
+    color: #ffdd57; 
     text-decoration: none;
   }
   

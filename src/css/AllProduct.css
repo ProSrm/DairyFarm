@@ -1,14 +1,24 @@
-.add-button{
+.add-button {
     margin-left: 1300px;
 }
-.mainAllProduct{
+
+.mainAllProduct {
     background-color: antiquewhite;
+    /* background-image: url('../assets/ProductImg/); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     padding: 10px;
-    height: 1000px;
+    /* height: 1000px; */
 }
-.AllProduct{
-    
+
+.AllProduct {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 4rem;
+    padding: 2rem;
+    max-width: 1200px;
+    margin: auto;
+    flex-wrap: wrap;
 }
