@@ -3,13 +3,11 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../css/AllProduct.css";
 import { Button } from 'react-bootstrap';
-import "../css/AllProduct.css";
-
 
 interface Product {
     id: number;
     name: string;
-    ImgUrl: string;
+    imgUrl: string;
 }
 
 const AllProducts: React.FC = () => {
@@ -20,7 +18,7 @@ const AllProducts: React.FC = () => {
         try {
             const response = await axios.get<Product[]>('https://localhost:7173/api/product');
             setProducts(response.data);
-            console.log(response.data)
+            console.log(response.data);
         } catch (error) {
             console.error('Error fetching products:', error);
         }
@@ -46,11 +44,11 @@ const AllProducts: React.FC = () => {
                     {products.map((product) => (
                         <div
                             key={product.id}
-                            className="cursor-pointer"
+                            className="cursor-pointer product-card"
                             onClick={() => handleProductClick(product.id)}
                         >
                             <img
-                                src={product.ImgUrl} 
+                                src={product.imgUrl}
                                 alt={product.name}
                                 className="w-full h-48 object-cover rounded-lg"
                             />
@@ -67,5 +65,3 @@ const AllProducts: React.FC = () => {
 };
 
 export default AllProducts;
-
-

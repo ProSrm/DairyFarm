@@ -38,28 +38,22 @@ const ProductList: React.FC = () => {
     }
 
     try {
-      let imageUrl = '';
-
-      // If the image is provided, generate a local URL (you would store this in the public folder)
-      if (formData.image) {
-        const imageName = formData.image.name; // Get the file name
-        const localImagePath = `/src/assets/ProductImg/${imageName}`; // This would be the relative path
-
-        // You can implement logic to save the image locally (in the public/images folder)
-        // For simplicity, assuming you have saved it manually in the public folder.
-
-        imageUrl = localImagePath; // Save only the image path in the database
+      let imageUrl: string = '';
+      if (formData?.image?.name) {
+        const imageName = formData.image.name;
+        const publicImagePath = `src/assets/ProductImg/${imageName}`;
+        imageUrl = publicImagePath;
       }
 
-      // Prepare the product data to send
+      console.log(imageUrl)
       const productData = {
         name: formData.name,
-        price: parseFloat(formData.price), // Convert price to a number
+        price: parseFloat(formData.price),
         description: formData.description,
-        ImgUrl: imageUrl, // Store the image URL (relative path)
+        ImgUrl: imageUrl,
       };
-console.log(productData)
-      // Send the data to the backend
+      console.log(productData)
+
       await axios.post('https://localhost:7173/api/product', productData, {
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +61,7 @@ console.log(productData)
       });
 
       alert('Product added successfully');
-      navigate('/allProduct'); // Navigate back to the AllProducts page
+      navigate('/allProduct');
     } catch (error) {
       console.error('Error adding product:', error);
       alert('Failed to add product');
