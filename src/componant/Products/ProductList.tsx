@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
+
 import axios from 'axios';
+
 import { useNavigate } from 'react-router-dom';
 
 interface ProductFormData {
@@ -7,6 +9,7 @@ interface ProductFormData {
   price: string;
   description: string;
   image: File | null;
+  
 }
 
 const ProductList: React.FC = () => {
@@ -15,6 +18,7 @@ const ProductList: React.FC = () => {
     price: '',
     description: '',
     image: null,
+    
   });
 
   const navigate = useNavigate();

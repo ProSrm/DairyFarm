@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+
 import axios from 'axios';
 import "../css/Product.css"
+
 
 interface Product {
     id: number;
@@ -22,6 +24,7 @@ const ProductDetails: React.FC = () => {
         const fetchProduct = async () => {
             try {
                 setLoading(true);
+                
                 const response = await axios.get<Product>(`https://localhost:7173/api/product/${productId}`);
                 setProduct(response.data);
             } catch (err) {
@@ -58,7 +61,7 @@ const ProductDetails: React.FC = () => {
                 <img
                     src={`/${product.imgUrl}`}
                     alt={product.name}
-                    className="w-full h-48 object-cover rounded-lg"
+                    className="w-full h-48 object-cover rounded-lg"                    
                 />
             </div>
             <div className="product-info">
@@ -73,3 +76,4 @@ const ProductDetails: React.FC = () => {
 };
 
 export default ProductDetails;
+
