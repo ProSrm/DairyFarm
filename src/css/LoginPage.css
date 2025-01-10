@@ -1,98 +1,110 @@
-
-
-body{
+body {
   /* padding: 0px;
   margin: 0px; */
 }
 
 
 .mainContainer {
-  background-image: url('D:\WebApps\Farm\DairyFarm\src\assets\Img\shelter.jpg'); 
-  background-size: cover; 
+  background-image: url('D:\WebApps\Farm\DairyFarm\src\assets\Img\shelter.jpg');
+  background-size: cover;
   background-position: center;
-  background-repeat: no-repeat; 
-  min-height: 100vh; 
+  background-repeat: no-repeat;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: left;
 }
+
 /* Container for the whole login page */
 .container {
-    max-width: 400px;
-    margin: 100px 100px;
-    padding: 30px 50px;
-    border: 1px solid #131111;
-    border-radius: 8px;
-    text-align: center;
-    background-color: #a7bbaa;
-  }
-  
-  /* Title of the login form */
-  .container h2 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  /* Form styles */
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-  }
-  
-  /* Styling for input fields */
-  .field {
-    text-align: left;
-  }
-  
-  .field label {
-    font-size: 14px;
-    color: #333;
-  }
-  
-  .field input {
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    margin-top: 5px;
-    box-sizing: border-box;
-  }
-  
-  /* Error message styling */
-  .error {
-    color: red;
-    font-size: 12px;
-    margin-top: 5px;
-  }
-  
-  /* Button styling */
-  .button {
-    padding: 10px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  .button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Link styling (optional) */
-  .link {
-    color: #007bff;
-    text-decoration: none;
-    margin-top: 10px;
-    display: block;
-  }
-  
-  .link:hover {
-    text-decoration: underline;
-  }
-  
+  max-width: 400px;
+  margin: 100px 100px;
+  padding: 30px 50px;
+  border: 1px solid #131111;
+  border-radius: 8px;
+  text-align: center;
+  background-color: #a7bbaa;
+}
+
+/* Title of the login form */
+.container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Styling for input fields */
+.field {
+  text-align: left;
+}
+
+.field label {
+  font-size: 14px;
+  color: #333;
+}
+
+.field input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+/* Error message styling */
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+/* Button styling */
+.button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+/* Link styling (optional) */
+.link {
+  color: #007bff;
+  text-decoration: none;
+  margin-top: 10px;
+  display: block;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.link-container {
+  display: flex;
+  gap: 20px;  /* This creates space between the links */
+}
+
+.link-container a {
+  color: #0d6efd;  /* Blue color for links */
+  text-decoration: none;
+}
+
+.link-container a:hover {
+  text-decoration: underline;
+}

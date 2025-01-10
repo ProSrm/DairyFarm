@@ -52,7 +52,7 @@
     padding: 0.5rem 2rem;
     font-size: 1.1rem;
     margin: 10px;
-    background-color: #ff002f;
+    /* background-color: #ff002f; */
     border: none;
     border-radius: 4px;
     transition: background-color 0.3s ease;

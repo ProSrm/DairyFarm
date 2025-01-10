@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import axios from 'axios';
-
+import { Button } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 
 interface ProductFormData {
@@ -9,7 +9,7 @@ interface ProductFormData {
   price: string;
   description: string;
   image: File | null;
-  
+
 }
 
 const ProductList: React.FC = () => {
@@ -18,7 +18,7 @@ const ProductList: React.FC = () => {
     price: '',
     description: '',
     image: null,
-    
+
   });
 
   const navigate = useNavigate();
@@ -34,13 +34,15 @@ const ProductList: React.FC = () => {
       setFormData((prevData) => ({ ...prevData, image: file }));
     }
   };
-
+  const backToAllProduct = () => {
+    navigate('/allProduct');
+    window.scrollTo(0, 0);
+  };
   const handleAddProduct = async () => {
     if (!formData.name || !formData.price) {
       alert('Please fill in all fields');
       return;
-    }
-
+    }    
     try {
       let imageUrl: string = '';
       if (formData?.image?.name) {
@@ -136,12 +138,12 @@ const ProductList: React.FC = () => {
                 className="w-full p-2 border border-gray-300 rounded-md"
               />
             </div>
-            <button
-              onClick={handleAddProduct}
-              className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600"
-            >
-              Add Product
-            </button>
+
+            <div className="AllProductButtonContainer">
+              <Button variant="success" className="backtoHomePage-button" onClick={backToAllProduct}>Back to AllProduct</Button>
+              <Button variant="primary" className="add-button" onClick={handleAddProduct}> Add Product</Button>
+            </div>
+            
           </div>
         </div>
       </div>
