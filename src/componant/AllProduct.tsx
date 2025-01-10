@@ -35,6 +35,10 @@ const AllProducts: React.FC = () => {
     const gotoProductList = () => {
         navigate('/productList');
     };
+    const gotoHome = () => {
+        navigate('/adminHome');
+        window.scrollTo(0, 0);
+    };
 
     return (
         <div className="mainAllProduct">
@@ -57,9 +61,20 @@ const AllProducts: React.FC = () => {
                     ))}
                 </div>
             </section>
-            <Button variant="primary" onClick={gotoProductList} className="add-button">
-                Add+
-            </Button>
+            {/* <div >
+                <Button variant="primary" onClick={gotoProductList} className="add-button">
+                    Add+
+                </Button>
+                <Button variant="primary" onClick={gotoHome} className="add-button">
+                    Back to Home Page
+                </Button>
+            </div> */}
+
+            <div className="AllProductButtonContainer">
+            <Button variant="success" className="backtoHomePage-button" onClick={gotoHome}>Back to Home Page</Button>
+            <Button variant="primary" className="add-button"onClick={gotoProductList}>Add+</Button>
+            </div>
+           
         </div>
     );
 };
